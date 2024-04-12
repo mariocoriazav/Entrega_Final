@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.urls import path
-from django.http import HttpResponse
+from .views import home_view, list_view, search_view
 
-def vista2(w2):
-    return HttpResponse("<h1>Sales 2024</h1>")
+
 
 urlpatterns = [
-    path("", vista2)
+    path("", home_view),
+    path("list/", list_view),
+    path("buscar/<nombre_usuario>", search_view),
     
 ]
