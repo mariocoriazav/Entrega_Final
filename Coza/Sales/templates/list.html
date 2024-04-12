@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Así forma la selección Nacional </title>
+    <title> Ventas </title>
 </head>
 <body>
-    <h1>Estos son los 11 jugadores titulares</h1>
+    <h1>Ventas</h1>
     <ul>
-    {% for jugador in players %}
-        <li>{{ jugador }} </li>
+    {% for Ventas in Ventas %}
+        {% if venta.codigo == "multicodigo" %}
+            <li>{{ venta }} !!!!! </li>
+        {% else %}
+            <li>{{ venta }} </li>
+        {% endif %}
     {% endfor %}
     </ul>
 </body>
