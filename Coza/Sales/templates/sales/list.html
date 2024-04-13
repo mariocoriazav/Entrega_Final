@@ -3,16 +3,35 @@
 {% block title %} Listado de Ventas {% endblock %}
 
 {% block content %}
-<section>
-    <h2>Ventas</h2>
-    <div class="sales-list">
-        {% for venta in ventas %}
-            <div class="discussion-item">
-                <p><a href="http://google.com">{{ venta }}</a></p>
-            </div>
-        {% empty %}
-            <p>No hay Ventas disponibles.</p>
-        {% endfor %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4">Ventas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre de Usuario</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for venta in ventas %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ venta.nombre_usuario }}</td>
+                    <td>{{ venta.codigo }}</td>
+                    <td>
+                        <a href="/Sales/detail/{{ venta.id }}" class="btn btn-primary btn-sm">Ver</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No hay Ventas disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </section>
 {% endblock %}

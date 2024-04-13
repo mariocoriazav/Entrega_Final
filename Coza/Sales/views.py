@@ -7,6 +7,11 @@ from .models import Venta
 def home_view(request):
     return render(request, "sales/home.html")   
 
+def detail_view(request, sales_id):
+    venta = Venta.objects.get(id=sales_id)
+    contexto_dict = {"venta": venta}
+    return render(request, "sales/detail.html", contexto_dict)
+
 
 def list_view(request):
     ventas = Venta.objects.all()

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle de la Venta{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        Detalle de la Venta
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ venta.nombre_usuario }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ venta.codigo }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
