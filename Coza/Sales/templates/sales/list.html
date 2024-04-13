@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} Listado de Ventas {% endblock %}
+
+{% block content %}
+<section>
+    <h2>Ventas</h2>
+    <div class="sales-list">
+        {% for venta in ventas %}
+            <div class="discussion-item">
+                <p><a href="http://google.com">{{ venta }}</a></p>
+            </div>
+        {% empty %}
+            <p>No hay Ventas disponibles.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -5,19 +5,21 @@ from .models import Venta
 # Create your views here.
 
 def home_view(request):
-    return HttpResponse("<h2>Sales 2024</h2>")
+    return render(request, "sales/home.html")   
 
 
 def list_view(request):
-    venta = Venta.objects.all()
-    contexto_dict = {'ventas': venta}
-    return render(request, "list.html", contexto_dict)
+    ventas = Venta.objects.all()
+    contexto_dict = {'ventas': ventas}
+
+    return render(request, "sales/list.html", contexto_dict)
 
 def search_view(request, nombre_usuario):
-    return HttpResponse(f"<h2>Productos comprados por: {nombre_usuario} </h2>")
+    codigos_del_usuario = Venta.objects.filter(nombre_usuario=nombre_usuario).all()
+    contexto_dict = {'ventas': codigos_del_usuario}
 
-
-
+    return render(request, "sales/list.html", contexto_dict)
+  
 
 def create_view(request, nombre_usuario, codigo):
 
