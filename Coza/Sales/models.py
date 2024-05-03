@@ -18,3 +18,11 @@ class Serie(models.Model):
 
     def __str__(self):
         return f"{self.nombre}- Capacidad: {self.capacidad}"
+    
+
+class Inventario(models.Model):
+    producto = models.CharField(max_length=100)
+    cantidad = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.producto}- Cantidad: {self.cantidad}"
