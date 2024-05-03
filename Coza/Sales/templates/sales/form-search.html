@@ -13,7 +13,7 @@
                         Filtros de búsqueda
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{% url 'buscar-con-formulario' %}">  
+                        <form method="POST">  
                             {% csrf_token %}  
                             {{ search_form.as_p }}  
                             <button type="buscar" class="btn btn-primary">Buscar</button>

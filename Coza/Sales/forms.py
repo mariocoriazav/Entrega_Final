@@ -1,6 +1,5 @@
 from django import forms
-
-from .models import Venta, Serie
+from .models import Venta, Serie, Avatar
 
 
 class VentaSearchForm(forms.Form):
@@ -30,3 +29,9 @@ class CodigoCreateForm(forms.ModelForm):
             "capacidad": "Capacidad máxima",
         }
 
+        
+
+class AvatarCreateForm(forms.ModelForm):
+    class Meta:
+        model = Avatar
+        fields = ['image']

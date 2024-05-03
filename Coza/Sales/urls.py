@@ -14,6 +14,7 @@ from .views import (
     user_creation_view,
     user_login_view,
     user_logout_view,
+    avatar_view,
     )
 
 
@@ -21,7 +22,7 @@ from .views import (
 urlpatterns = [
     path("", home_view, name="home"),
     path("detail/<sales_id>", detail_view),
-    path("list/", list_view),
+    path("list/", list_view, name="list"),
     path("buscar/<nombre_usuario>", search_view),
     path("crear/<nombre_usuario>/<codigo>", create_view),
 
@@ -32,7 +33,7 @@ urlpatterns = [
     path("crear-usuario/", user_creation_view, name="crear-usuario"),
     path('login/', user_login_view, name='login'),
     path('logout/', user_logout_view, name='logout'),
-
+    path('avatar/add/', avatar_view, name='avatar_add'),
 
     
 

@@ -5,6 +5,10 @@ from .forms import VentaSearchForm, CodigoCreateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
+from .models import Avatar
+from .forms import AvatarCreateForm
+
 
 # Create your views here.
 
@@ -79,6 +83,8 @@ def search_with_form_view(request):
         contexto_dict = {"todos_los_codigos": codigos_del_usuario}
         
         return render(request, "sales/list.html", contexto_dict)
+    else:
+        return render(request, "sales/form-search.html", context={"search_form":form})
     
 
 def user_login_view(request):
@@ -118,3 +124,24 @@ from django.contrib.auth import logout
 def user_logout_view(request):
     logout(request)
     return redirect("login")
+
+
+
+
+def avatar_view(request):
+    if request.method == "GET":
+        contexto = {"ava": AvatarCreateForm()}
+    else:
+        form = AvatarCreateForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data["image"]
+            avatar_existente = Avatar.objects.filter(user=request.user)
+            avatar_existente.delete()
+            nuevo_avatar = Avatar(image=image, user=request.user)
+            nuevo_avatar.save()
+            return redirect("home")
+        else:
+            contexto = {"ava": form}
+
+
+    return render(request, "sales/avatar_create.html", context=contexto)

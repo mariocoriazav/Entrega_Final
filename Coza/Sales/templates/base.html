@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} xxxxx {% endblock title %}</title>
+    <title>{% block title %} Coza {% endblock title %}</title>
     <!-- Bootstrap CSS CDN (Bootstrap 4 used as an example) -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -37,6 +37,14 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">{{ user }}</a>
+                    </li>
+                    <li class="nav-item">
+                        {% if user.avatar.image %}
+                        <img src="{{ user.avatar.image.url }}" alt="Avatar" style="height: 40px; width: 40px; border-radius: 50%;">
+                        {% endif %}
+                        <li class="nav-item">
+                            <a href="{% url 'avatar_add' %}" class="nav-link">Add Avatar</a>
+                        </li>
                     </li>
                 {% else %}
                     <li class="nav-item">
